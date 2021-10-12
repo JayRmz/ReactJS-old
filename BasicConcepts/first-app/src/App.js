@@ -1,22 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+// import HolaMundo, {AdiosMundo} from './components/HolaMundo';
+// import HolaMundo from './components/HolaMundo';
+// import AdiosMundo from './components/AdiosMundo';
+import Saludar from './components/Saludar';
 
 function App() {
+
+  const user = {
+    name: 'Jay',
+    lastName: 'Ramírez',
+    age: 25,
+    color: 'Green'
+  }
+
+  const sayHello = (name) => {
+    alert(`Hello ${name}!`);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        {/* <HolaMundo/>
+
+        <AdiosMundo/> */}
+
+        <Saludar user={user} saludarFunction={sayHello}/>
+
+        {/* <Saludar saludarFunction={sayHello}/> */}
       </header>
     </div>
   );
