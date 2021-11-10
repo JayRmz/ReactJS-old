@@ -41,7 +41,7 @@ function Movie(props) {
           <h2>{title}</h2>
           <p>{overview}</p>
           <Link to={`/movie/${id}`}>
-            <Button type="primary">Ver Más</Button>
+            <Button type="primary">More</Button>
           </Link>
         </div>
       </div>

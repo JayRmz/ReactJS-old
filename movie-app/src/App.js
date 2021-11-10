@@ -18,7 +18,7 @@ function App() {
   return (
     <Layout>
       <Router>
-        <Header>
+        <Header style={{ zIndex: 1 }}>
           <MenuTop />
         </Header>
 

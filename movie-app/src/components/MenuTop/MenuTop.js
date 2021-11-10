@@ -27,11 +27,11 @@ export default function MenuTop() {
         </Menu.Item>
 
         <Menu.Item key="3">
-          <Link to="/popular">Populares</Link>
+          <Link to="/popular">Popular</Link>
         </Menu.Item>
 
         <Menu.Item key="4">
-          <Link to="/search">Buscar</Link>
+          <Link to="/search">Search</Link>
         </Menu.Item>
       </Menu>
     </div>
