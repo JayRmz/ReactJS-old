@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Button } from "antd";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import useFetch from "../../hooks/useFetch";
 import { URL_API, API_KEY, URL_IMG } from "../../utils/constants";
 import Loading from "../../components/Loading";
+import ModalVideo from "../../components/ModalVideo";
 import "./movie.scss";
 
+import { CaretRightOutlined } from "@ant-design/icons";
 export default function Movie() {
   const { id } = useParams();
 
@@ -27,7 +29,6 @@ function RenderMovie(props) {
   const { title, backdrop_path, poster_path } = movieInfo;
   const backdropPath = `${URL_IMG}${backdrop_path}`;
 
-  console.log(movieInfo);
   return (
     <div
       className="movie"
@@ -55,8 +56,36 @@ function PosterMovie(props) {
 
 function MovieInfo(props) {
   const { movieInfo } = props;
-  console.log(movieInfo);
+
   const { title, id, release_date, overview, genres } = movieInfo;
+
+  const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const videoMovie = useFetch(
+    `${URL_API}/movie/${id}/videos?api_key=${API_KEY}`
+  );
+
+  const openModal = () => setIsVisibleModal(true);
+  const closeModal = () => setIsVisibleModal(false);
+
+  const renderVideo = () => {
+    if (videoMovie.result) {
+      if (videoMovie.result.results.length > 0) {
+        return (
+          <>
+            <Button icon={<CaretRightOutlined />} onClick={openModal}>
+              Trailer
+            </Button>
+            <ModalVideo
+              videoKey={videoMovie.result.results[0].key}
+              videoPlatform={videoMovie.result.results[0].site}
+              isOpen={isVisibleModal}
+              close={closeModal}
+            />
+          </>
+        );
+      }
+    }
+  };
 
   return (
     <>
@@ -64,7 +93,7 @@ function MovieInfo(props) {
         <h1>
           {title} <span>{moment(release_date).year()}</span>
         </h1>
-        <button>Trailer</button>
+        {renderVideo()}
       </div>
       <div className="movie__info-content ">
         <h3>General</h3>
