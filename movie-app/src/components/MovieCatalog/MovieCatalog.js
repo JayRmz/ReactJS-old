@@ -12,7 +12,7 @@ export default function MovieCatalog(props) {
   const { results } = movies;
 
   return results.map((movie) => (
-    <Col key={movie.id} xs={4} className="movie-catalog">
+    <Col key={movie.id} sm={true} className="movie-catalog">
       <MovieCard movie={movie} />
     </Col>
   ));
