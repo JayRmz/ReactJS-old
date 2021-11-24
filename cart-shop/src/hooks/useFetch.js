@@ -13,12 +13,11 @@ export default function useFetch(url, options) {
         setResult(json);
         setLoading(false);
       } catch (err) {
-        console.error(err);
         setError(err);
         setLoading(false);
       }
     })();
-  }, [url, options]);
+  }, [options, url]);
 
   return { loading, result, error };
 }

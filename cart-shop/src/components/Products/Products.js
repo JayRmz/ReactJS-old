@@ -1,16 +1,14 @@
 import React from "react";
-// Components
-import { Container, Row, Spinner } from "react-bootstrap";
-import Loading from "../Loading";
+import { Container, Row } from "react-bootstrap";
 import Product from "../Product";
-
-// css
-import "./Products.scss";
+import Loading from "../Loading";
 
 export default function Products(props) {
-  const { products = {}, addProductCart } = props;
-  const { loading, error, result } = products;
-  console.log("prodJS", props);
+  const {
+    products: { result, loading, error },
+    addProductCart
+  } = props;
+
   return (
     <Container>
       <Row>
@@ -18,13 +16,11 @@ export default function Products(props) {
           <Loading />
         ) : (
           result.map((product, index) => (
-            <div>
-              <Product
-                key={index}
-                prod={product}
-                addProductCart={addProductCart}
-              />
-            </div>
+            <Product
+              key={index}
+              product={product}
+              addProductCart={addProductCart}
+            />
           ))
         )}
       </Row>

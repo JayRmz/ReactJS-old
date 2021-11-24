@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import TopMenu from "./components/TopMenu";
-import useFetch from "./hooks/useFetch";
-import { LOCAL_CART, URL_API } from "./utils/constants";
-import Products from "./components/Products";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import Loading from "./components/Loading";
+import TopMenu from "./components/TopMenu";
+import Products from "./components/Products";
+import useFetch from "./hooks/useFetch";
+import { urlApiProducts } from "./utils/constants";
+import { STORAGE_PRODUCTS_CART } from "./utils/constants";
 
 function App() {
-  const products = useFetch(URL_API);
+  const products = useFetch(urlApiProducts, null);
   const [productsCart, setProductsCart] = useState([]);
 
   useEffect(() => {
@@ -15,11 +15,11 @@ function App() {
   }, []);
 
   const getProductsCart = () => {
-    const idProducts = localStorage.getItem(LOCAL_CART);
+    const idsProducts = localStorage.getItem(STORAGE_PRODUCTS_CART);
 
-    if (idProducts) {
-      const idsProducts = idProducts.split(",");
-      setProductsCart(idsProducts);
+    if (idsProducts) {
+      const idsProductsSplit = idsProducts.split(",");
+      setProductsCart(idsProductsSplit);
     } else {
       setProductsCart([]);
     }
@@ -29,10 +29,11 @@ function App() {
     const idsProducts = productsCart;
     idsProducts.push(id);
     setProductsCart(idsProducts);
-    localStorage.setItem(LOCAL_CART, productsCart);
+    localStorage.setItem(STORAGE_PRODUCTS_CART, productsCart);
     getProductsCart();
-    toast.success(`Added ${name} to cart `);
+    toast.success(`${name} añadido al carrito correctamente.`);
   };
+
   return (
     <div>
       <TopMenu
@@ -48,7 +49,7 @@ function App() {
         newestOnTop
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss={false}
+        pauseOnVisibilityChange={false}
         draggable
         pauseOnHover={false}
       />

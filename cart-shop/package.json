@@ -1,19 +1,15 @@
 {
-  "name": "cart-shop",
+  "name": "cart-ecommerce-recat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "bootstrap": "^5.1.3",
-    "node-sass": "4.14.1",
-    "react": "^17.0.2",
-    "react-bootstrap": "^2.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "react-toastify": "^8.1.0",
-    "web-vitals": "^1.0.1"
+    "bootstrap": "^4.3.1",
+    "node-sass": "^4.12.0",
+    "react": "^16.10.1",
+    "react-bootstrap": "1.0.0-beta.12",
+    "react-dom": "^16.10.1",
+    "react-scripts": "3.2.0",
+    "react-toastify": "^5.4.0"
   },
   "scripts": {
     "dev": "react-scripts start",
@@ -22,10 +18,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [

@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Card } from "antd";
+import { Col, Card, Grid } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
@@ -12,9 +12,9 @@ export default function MovieCatalog(props) {
   const { results } = movies;
 
   return results.map((movie) => (
-    <Col key={movie.id} sm={true} className="movie-catalog">
-      <MovieCard movie={movie} />
-    </Col>
+    // <Col key={movie.id} className="movie-catalog">
+    <MovieCard movie={movie} />
+    // </Col>
   ));
 }
 
